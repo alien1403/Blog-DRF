@@ -3,7 +3,14 @@ from blog.models import Post
 from .serializers import PostSerializer
 
 class PostList(generics.ListCreateAPIView):
-    pass
+    serializer_class = PostSerializer
+
+    def get_queryset(self):
+        return Post.postobjects.all()
+    
 
 class PostDetail(generics.RetrieveDestroyAPIView):
-    pass
+    serializer_class = PostSerializer
+
+    def get_queryset(self):
+        return Post.postobjects.all()
